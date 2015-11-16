@@ -1,5 +1,5 @@
 score-table section {
-  margin-top: 50%;
+  margin-top: 50vh;
 }
 .score-entry-cell, .table-head-cell, .table-body-cell, .total-score-cell, input {
   width: 25% !important;

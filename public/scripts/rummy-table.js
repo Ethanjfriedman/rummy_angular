@@ -31,8 +31,6 @@
                   startButtonText: "Let's score us some rummy",
                   winningText: ""
                 }
-                this.startButtonText = "Let's score us some rummy";
-                this.winningText = "";
 
                 this.startGame = function() {
                   var selection = usersSvc.getSelection();

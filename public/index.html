@@ -8,19 +8,19 @@
   </head>
   <body>
     <main ng-controller="RummyController as rummyCtrl">
+      <div class="container">
+        <header ng-include="rummyCtrl.templates.header">
+        </header>
 
-      <header ng-include="rummyCtrl.templates.header">
-      </header>
+        <player-entry>
+        </player-entry>
 
-      <player-entry>
-      </player-entry>
+        <score-table>
+        </score-table>
 
-      <score-table>
-      </score-table>
-
-      <footer ng-include="rummyCtrl.templates.footer">
-      </footer>
-      
+        <footer ng-include="rummyCtrl.templates.footer">
+        </footer>
+      </div>
     </main>
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

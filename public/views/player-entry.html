@@ -7,33 +7,32 @@ player selection code
 <section id="player-entry-section">
 
   <!-- this opening div is hidden once you click the 'begin' button -->
-  <div class="animate-hide" ng-hide="entry.started">
+  <div class="animate-hide row" ng-hide="entry.started">
     <!-- this button calls startEntering() -->
-    <button ng-click="entry.started = true">Begin</button>
+    <button class="col s2 offset-s5" ng-click="entry.started = true">Begin</button>
   </div>
 
   <div ng-hide="entry.selectionComplete">
 
   <!-- this is the player entry div. It's hidden until you click 'begin' -->
-    <div ng-hide="!entry.started" class="animate-hide">
-      <h4>Rummy Scorekeeper v3.0</h4>
-
+    <div ng-hide="!entry.started" class="animate-hide row">
       <select ng-model="entry.numPlayers"
               ng-options="num for num in [2,3,4]"
               title="Number of Players"
+              id="num-player-select"
               ng-hide="entry.numPlayers >=2"
-              class="animate-hide"
+              class="animate-hide col s4 offset-s4"
               novalidate required autofocus>
         <option value disabled>Enter number of players</option>
       </select>
       <div id="entry-forms" ng-show="entry.numPlayers >= 2" class="animate-hide">
-        <h4>{{entry.headerSelect()}}</h4>
-        <h5>
+        <h5>{{entry.headerSelect()}}</h5>
+        <div>
           <p>Choose from list below or create a new player</p>
           <p>(shift- or command-click to select multiple players)</p>
-        </h5>
+        </div>
         <button ng-click="entry.goBack()">Go back (choose a different number of players)</button>
-        <div id="selected-players">
+        <div id="selected-players" class="row">
           <p>Current selection:</p>
           <p ng-repeat="player in entry.playersEntered" ng-hide="entry.playersEntered.length < 1">
             <strong>{{player.name}}, </strong> {{player.record.wins}} wins,
@@ -46,17 +45,23 @@ player selection code
                 title="Player Selection"
                 id="player-selection"
                 ng-options="player.name for player in entry.availablePlayers"
+                class="col s4 offset-s4"
                 multiple autofocus>
           <optgroup label="Available Players"></optgroup>
         </select>
-        <form ng-submit="entry.createNewPlayer()" id="player-creation-form">
-          <input type="text"
-                 ng-model="entry.newPlayerName"
-                 name="new-player-input"
-                 id="new-player-input"
-                 placeholder="New player name" />
-          <input type="submit" id="submit" value="Create new player" />
-        </form>
+        <div class="row">
+          <form ng-submit="entry.createNewPlayer()" id="player-creation-form">
+            <input type="text"
+                   ng-model="entry.newPlayerName"
+                   name="new-player-input"
+                   id="new-player-input"
+                   class="col s2 offset-s4"
+                   placeholder="New player name" />
+            <div class="row">
+              <input type="submit" id="submit" class="col s2 offset-s4" value="Create new player" />
+            </div>
+          </form>
+        </div>
       </div>
       <div ng-show="entry.compareNums() == 0 && entry.playersEntered.length >= 2">
         <button ng-click="entry.doneEntering()">I'm satisfied with this player selection</button>
