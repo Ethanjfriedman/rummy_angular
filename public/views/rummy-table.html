@@ -6,31 +6,41 @@
 
   <!-- This is the scoring table at the heart of the app -->
   <div id="table" ng-show="table.game.started">
-    <div class="table-head-cell" ng-repeat="player in table.game.players">
-        {{player.name}}
+    <div class="row">
+      <div class="table-head-row" ng-repeat="player in table.game.players">
+          <div class="table-head-cell col s3">{{player.name}}</div>
       </div>
+    </div>
     <div id="table-body">
-      <div class="table-body-row" ng-repeat="turn in table.game.score.turns">
-        <div class="table-body-cell" ng-repeat="score in turn track by $index">
-          {{score}}
+      <div class="row">
+        <div class="table-body-row row" ng-repeat="turn in table.game.score.turns">
+            <div class="table-body-cell col s3" ng-repeat="score in turn track by $index">
+              {{score}}
+          </div>
         </div>
       </div>
     </div>
     <div class="table-foot">
-      <form ng-submit="table.receiveScores(table.game.score.currentTurnScores)">
-          <input type="number"
-                 step="5"
-                 min="-500"
-                 max="500"
-                 ng-model="table.game.score.currentTurnScores[$index]"
-                 ng-repeat="player in table.game.players track by $index"
-                 required
-                 autofocus>
-          </input>
-        <input type="submit">
-      </form>
-    <div class="total-score-cell" ng-repeat="score in table.game.score.totals track by $index">
-      {{ score }}
+      <div class="row">
+        <form ng-submit="table.receiveScores(table.game.score.currentTurnScores)">
+            <input type="number"
+                   step="5"
+                   min="-500"
+                   max="500"
+                   id="table-input-cell"
+                   class="col s3"
+                   ng-model="table.game.score.currentTurnScores[$index]"
+                   ng-repeat="player in table.game.players track by $index"
+                   required
+                   autofocus>
+            </input>
+          <input type="submit" class="col s2">
+        </form>
+    </div>
+      <div class="row">
+        <div class="total-score-cell col s3" ng-repeat="score in table.game.score.totals track by $index">
+          {{ score }}
+        </div>
     </div>
   </div>
   <div id="winning message">

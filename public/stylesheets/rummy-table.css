@@ -5,3 +5,8 @@ score-table section {
   width: 25% !important;
   display: inline;
 }
+
+input[type=submit] {
+  padding: 0.5% !important;
+  color: black !important;
+}

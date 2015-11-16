@@ -35,8 +35,13 @@ server.use(express.static('./public')); //location of static files
 server.use(morgan('short'));                        //activating morgan logging
 
 //all '/users' routes in public/controllers/users.js
-var userController=require('./public/controllers/users.js');
+var userController = require('./public/controllers/users.js');
 server.use(userController);
+
+//all '/games' routes in public/controllers/games.js
+var gameController = require('./public/controllers/games.js');
+server.use(gameController);
+console.log(gameController.router);
 
 /************************************************************/
 /****** GET request to root renders the Angular SPA *********/

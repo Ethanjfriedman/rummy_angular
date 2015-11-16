@@ -39,7 +39,7 @@ player selection code
                                                {{player.record.losses}} losses,
                                                {{player.record.ties}} ties
           </p>
-          <p ng-show="entry.compareNums() < 0"><strong>You've entered two many players. Please only choose {{entry.numPlayers}} players.</strong></p>
+          <p ng-show="entry.compareNums() < 0"><strong>You've entered too many players. Please only choose {{entry.numPlayers}} players.</strong></p>
         </div>
         <select ng-model="entry.playersEntered"
                 title="Player Selection"
