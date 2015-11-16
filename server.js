@@ -41,6 +41,6 @@ server.use(userController);
 /************************************************************/
 /****** GET request to root renders the Angular SPA *********/
 /************************************************************/
-server.get('/', function(req, res) {
+server.get('/rummy2', function(req, res) {
   res.render('index');
 });

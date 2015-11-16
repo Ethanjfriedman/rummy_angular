@@ -36,7 +36,7 @@
 
         //Creates a new user in the db
         createUser: function(newUser) {  //TODO FIXME WORK ON ERROR HANDLING
-          $http.post('/users',newUser)
+          $http.post('/rummy2/users',newUser)
             .then(function(user) {
               console.log(user);
               if (user.data.error) {
