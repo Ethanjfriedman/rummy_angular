@@ -5,7 +5,7 @@ var express = require('express'),
 /**************** USERS ROUTES *******************/
 //GET request to /users should supply a file from the database
 //with the users in the database (INDEX in RESTful routing)
-router.get('/rummy2/users', function(req, res) {
+router.get('/users', function(req, res) {
   User.find({}, function (error, users) {
     if (error) {
       console.log('error pulling up users from database');
@@ -18,7 +18,7 @@ router.get('/rummy2/users', function(req, res) {
 
 //POST request to /users should add a new user to the database
 //(CREATE in RESTful routing)
-router.post('/rummy2/users', function(req, res) {
+router.post('/users', function(req, res) {
   //parse req.body (with body-parser) and store the resulting object in a new Mongoose User schema
   var newUser = new User(req.body);
 

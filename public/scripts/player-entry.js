@@ -23,7 +23,7 @@
 
           //Makes a GET request to the server to pull the available users in from the db.
           this.fetchUsers = function() {
-            $http.get('/rummy2/users')
+            $http.get('/users')
             .then(function(result){
               users = result.data.users;
               controller.availablePlayers = users;
