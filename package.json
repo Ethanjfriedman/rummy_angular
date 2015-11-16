@@ -1,0 +1,18 @@
+{
+  "name": "rummy10-28-15",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ethan Friedman",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "mongodb": "^2.0.48",
+    "mongoose": "^4.2.5",
+    "morgan": "^1.6.1"
+  }
+}

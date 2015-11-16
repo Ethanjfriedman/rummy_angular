@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="rummyModule">
+  <head>
+    <meta charset="utf-8">
+    <title>Rummy Scorekeeper</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+    <link rel="stylesheet" href="stylesheets/style.css" type="text/css"  media="screen,projection"/>
+  </head>
+  <body>
+    <main ng-controller="RummyController as rummyCtrl">
+
+      <header ng-include="rummyCtrl.templates.header">
+      </header>
+
+      <player-entry>
+      </player-entry>
+
+      <score-table>
+      </score-table>
+
+      <footer ng-include="rummyCtrl.templates.footer">
+      </footer>
+      
+    </main>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+      <script type="text/javascript" src="scripts/app.js"></script>
+      <script type="text/javascript" src="scripts/dummy-players.js"></script>
+      <script type="text/javascript" src="scripts/player-entry.js"></script>
+      <script type="text/javascript" src="scripts/rummy-table.js"></script>
+  </body>
+</html>

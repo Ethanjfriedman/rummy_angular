@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="../stylesheets/rummy-table.css" type="text/css"  media="screen,projection"/>
+<section>
+  <div ng-click="table.startGame()" ng-hide="table.game.started">
+    <button>{{table.displays.startButtonText}}</button>
+  </div>
+
+  <!-- This is the scoring table at the heart of the app -->
+  <div id="table" ng-show="table.game.started">
+    <div class="table-head-cell" ng-repeat="player in table.game.players">
+        {{player.name}}
+      </div>
+    <div id="table-body">
+      <div class="table-body-row" ng-repeat="turn in table.game.score.turns">
+        <div class="table-body-cell" ng-repeat="score in turn track by $index">
+          {{score}}
+        </div>
+      </div>
+    </div>
+    <div class="table-foot">
+      <form ng-submit="table.receiveScores(table.game.score.currentTurnScores)">
+          <input type="number"
+                 step="5"
+                 min="-500"
+                 max="500"
+                 ng-model="table.game.score.currentTurnScores[$index]"
+                 ng-repeat="player in table.game.players track by $index"
+                 required
+                 autofocus>
+          </input>
+        <input type="submit">
+      </form>
+    <div class="total-score-cell" ng-repeat="score in table.game.score.totals track by $index">
+      {{ score }}
+    </div>
+  </div>
+  <div id="winning message">
+    {{table.displays.winningText}}
+  </div>
+</section>
