@@ -6,7 +6,7 @@
   console.log('rummy-table.js loading');
 
   angular.module('rummyTable', [])
-         .directive('scoreTable', function() {
+         .directive('scoreTable', ['$http',function($http) {
             return {
               restrict: 'E',
               templateUrl: './views/rummy-table.html',
@@ -46,7 +46,6 @@
                 };
 
                 this.receiveScores = function(scores) {
-                  console.log(this.game);
                   var weHaveAWinner = false;
                   var totals = this.game.score.totals;
                   var turns = this.game.score.turns;
@@ -54,11 +53,9 @@
                   turns.push(scores);
                   for (var s = 0; s < totals.length; s++) {
                     totals[s]+= scores[s];
-                    console.log('totals: ' + totals);
                     if (totals[s] >= this.game.winningScore) {
                       weHaveAWinner = true;
                     }
-                    console.log(weHaveAWinner);
                   }
 
                   this.game.score.currentTurnScores = [];
@@ -69,12 +66,37 @@
 
                 this.endGame = function(finalScores) {
                   var maxScore = this.game.winningScore;
+
+                  //this loop pushes everyone who exceeded the winning threshold into the winners array
                   for (var i = 0; i < finalScores.length; i++) {
                     if (finalScores[i] >= maxScore) {
                       maxScore = finalScores[i];
-                      this.game.winners.push(this.game.players[i])
+                      this.game.winners.push(this.game.players[i]);
                     }
                   }
+
+                  //this ugly set of loops updates the various winners and losers' records accordingly
+                  for (var i = 0; i < finalScores.length; i++) {
+                    var player = this.game.players[i];
+                    if (this.game.winners.length === 1) {
+                      if (finalScores[i] === maxScore) {
+                        player.record.wins += 1;
+                        usersSvc.updateUser(player);
+                      } else {
+                        player.record.losses -= 1;
+                        usersSvc.updateUser(player);
+                      }
+                    } else {
+                      if (finalScores[i] === maxScore) {
+                        player.record.ties += 1;
+                        usersSvc.updateUser(player);
+                      } else {
+                        player.record.losses -= 1;
+                        usersSvc.updateUser(player);
+                      }
+                    }
+                  }
+
                   console.log(this.game.winners);
                   var winnersCount = this.game.winners.length;
                   var text = "";
@@ -101,9 +123,27 @@
                     text = "uh-oh something's wrong";
                   }
                   this.displays.winningText = text;
+
+                  var completedGame = {
+                    players: JSON.parse(angular.toJson(this.game.players)),
+                    date: Date.now(),
+                    isCompleted: true,
+                    winners: JSON.parse(angular.toJson(this.game.winners)),
+                    turns: this.game.score.turns,
+                    totals: this.game.score.totals
+                  }
+                  console.log(completedGame);
+                  $http.post('/games', JSON.stringify(completedGame)).then(
+                    function(success) {
+                      console.log(success);
+                    },
+                    function(error) {
+                      console.log(error);
+                    }
+                  );
                 };
               },
               controllerAs: 'table'
             }
-          });
+          }]);
 })();

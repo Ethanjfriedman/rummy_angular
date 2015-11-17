@@ -12,7 +12,7 @@ var express = require('express'),
     router.get('/games', function(req, res) {
       Game.find({}, function(error, games) {
         if (error) {
-          console.error.bind(console, 'error pulling games from databse');
+          console.log(error);
         } else {
           res.json({games: games});
         }
@@ -22,9 +22,9 @@ var express = require('express'),
     //POST request to /games should add a new game to the database
     router.post('/games', function(req, res) {
       var newGame = new Game(req.body);
-
       newGame.save(newGame, function(error, savedGame) {
-        if (error) {console.error.bind(console,'error saving game to database');
+        if (error) {
+          console.log(error);
         } else {
           res.json({game: savedGame});
         }

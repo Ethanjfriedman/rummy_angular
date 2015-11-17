@@ -1,2 +1,44 @@
 <link rel="stylesheet" href="../stylesheets/header.css" type="text/css"  media="screen,projection"/>
 <h3>rummy.score</h3>
+<div class='topBar'>
+  <div class='mobileMenu'>
+     <div class='navbar'>
+      <ul>
+        <li><a href="#">About this Project</a></li>
+      </ul>
+    </div>
+
+    <div id="hamburger-button">
+            <span></span>
+            <span></span>
+            <span></span>
+    </div>
+  </div>
+  <div class='left'>
+  <a id='logo' href='/'>
+    <h3 class='logo'>rummy.score</h3></a>
+    <p class='tagline'>Data Visualization made easy. </br> Learn more about the city you love.</p>
+  </div>
+  <div class='right'>
+    <ul>
+        <li><a href="/howto">How to Use the Site</a></li>
+        <li><a href="/about">About this Project</a></li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  function animateHamburger() {
+  $('#hamburger-button').toggleClass('open');
+/*animating burger to x*/
+}
+
+function slideMenu(){
+  $('.navbar').toggleClass('open');
+  /*animating menu slidedown*/
+}
+$('#hamburger-button').click(function(){
+  animateHamburger();
+  slideMenu();/*attaching click handler to burger*/
+});
+</script>

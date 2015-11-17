@@ -12,6 +12,32 @@
         footer: "views/footer.html"
       }
   }])
+    .directive('gamesDisplay', ['$http',function($http) {
+      return {
+        restrict: 'E',
+        templateUrl: './views/games-display.html',
+        controller: function() {
+          var controller = this;
+          this.displayed = false;
+          this.games = [];
+
+          this.getGames = function() {
+            $http.get('/games').then(
+              function(result) {
+                controller.games = result.data[0];
+                console.log(result.data);
+                console.log(controller.games);
+              }, function(error) {
+                console.log(error);
+              });
+
+            this.displayed = !this.displayed;
+          }
+
+        },
+        controllerAs: 'games'
+      }
+    }])
     .service('usersSvc', function($http) {
       var users = []; //this array stores the users available to be selected.
       var selection = []; //this array stores the users selected for the game.
@@ -46,11 +72,20 @@
               console.log(err);
             });
         },
-        //
-        // adds user to the selection
-        // selectUser: function(user) {
-        //   selection.push(user);
-        // },
+
+        updateUser: function(user) {
+          var id = user._id;
+          user = JSON.stringify(user);
+          console.log('stringified user');
+          console.log(user);
+          $http.patch('/users/' + id, user)
+            .then(function(success){
+              console.log(success);
+            },
+            function(error){
+              console.log(error);
+            });
+        },
 
         //adds users to the array TODO delete this?
         addUsers: function(array) {
@@ -73,4 +108,18 @@
         }
       }
     });
+
+function animateHamburger() {
+$('#hamburger-button').toggleClass('open');
+/*animating burger to x*/
+}
+
+function slideMenu(){
+$('.navbar').toggleClass('open');
+/*animating menu slidedown*/
+}
+$('#hamburger-button').click(function(){
+animateHamburger();
+slideMenu();/*attaching click handler to burger*/
+});
 })();

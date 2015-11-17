@@ -47,6 +47,13 @@ router.post('/users', function(req, res) {
   });
 });
 
+router.patch('/users/:id', function(req, res) {
+  console.log(req.body);
+  console.log("***************************************");
+  console.log(req.params);
+  var id = req.params.id;
+});
+
 //TODO
 //DELETE A USER
 //MODIFY A USER

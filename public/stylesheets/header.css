@@ -1,3 +1,116 @@
-header h3 {
+/*header h3 {
   text-align: center;
+}*/
+
+/*<><><><><><><><>BURGER NAV<><><><><><>*/
+.mobileMenu{
+  display:none;
+  width:100vw;
+  height:10vh;
+}
+#hamburger-button {
+  position: relative;
+  z-index: 9999;/*so it's above everything*/
+  display: inline-block;
+  vertical-align: top;
+  height:30px;
+  width:40px;
+  margin-left:3%;
+  margin-top:3%;
+}
+
+#hamburger-button:hover {
+  cursor: pointer;
+  /* change the cursor to pointer */
+}
+
+#hamburger-button > span {
+  display: block;
+  height: 6px;
+  margin-bottom: 6px;
+  width: 40px;
+  background-color: white;
+ -webkit-transition-timing-function: linear; /* Safari and Chrome */
+transition-timing-function: linear;
+transition-duration:1s;
+}
+
+
+#hamburger-button.open > span:first-child {
+-webkit-transform: translateY(12px) rotate(45deg); /* Chrome, Safari, Opera */
+transform:translateY(12px) rotate(45deg);
+}
+
+
+#hamburger-button.open > span:nth-child(2) {
+   -webkit-transform: rotateY(90deg); /* Safari */
+    transform: rotateY(90deg);
+  /* rotates the second child on the Y AXIS ONLY 90 degrees so it disappears into a point */
+}
+
+#hamburger-button.open > span:last-child {
+ -webkit-transform: translateY(-12px) rotate(-45deg); /* Chrome, Safari, Opera */
+    transform: translateY(-12px) rotate(-45deg);
+}
+
+
+.navbar{
+  position:absolute;
+  opacity:0;
+  z-index:888;/*so it's above the content and below the burger*/
+  height:100vh;
+  width: 100vw;
+  margin-left:-2%;
+  top:-100vw;
+  transition:.8s;
+  background-color:darkblue;
+  color:white;
+}
+
+.navbar.open{
+  opacity:.9;
+  top:0;
+}
+.navbar ul{
+  list-style:none;
+  margin-top:20%;
+  font-size:1.5em;
+}
+
+.navbar ul li{
+  width:30%;
+  margin-left: -5%;
+  margin-right:auto;
+  border-bottom:1px solid white;
+  margin-bottom:5%;
+  padding:0px;
+  opacity:1;
+  transition:opacity 1s ease, left 1s ease;
+  position:relative;
+  left:5%;
+  text-align:center;
+}
+.navbar.open ul li{
+ opacity:1;
+left:0;
+width:100%;
+}
+.navbar ul li a{
+  color:white;
+  text-decoration: none;
+}
+
+.navbar ul li:hover{
+  text-shadow:1px 1px 3px pink;
+  cursor:pointer;
+}
+/*giving all the menu items different delays so they animate slightly one after the other.*/
+.navbar ul li:nth-child(2){
+  transition-delay: .1s;
+}
+.navbar ul li:nth-child(3){
+  transition-delay:.2s;
+}
+.navbar ul li:last-child{
+  transition-delay:.3s;
 }
