@@ -1,11 +1,11 @@
-<section ng-show="games.displayed">
+<section ng-show="games.displayed" id="games-table" class="modal modal-fixed-footer">
   <!-- <p>Click on any game for more information -- AS OF 11/17/15 NOT YET WORKING</p> -->
-  <table class="responsive-table highlight centered">
+  <table class="responsive-table highlight centered modal-content">
     <thead>
       <tr>
         <th>Date</th>
-        <th>Players / Scores</th>
         <th></th>
+        <th>Players / Scores</th>
         <th></th>
         <th></th>
         <th>Winner(s)</th>
@@ -26,4 +26,7 @@
       </tr>
     </tbody>
   </table>
+  <div class="modal-footer">
+    <a href="#" class="modal-action modal-close waves-effect waves-black btn-flat">go back</a>
+  </div>
 </section>

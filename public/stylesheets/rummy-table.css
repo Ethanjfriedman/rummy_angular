@@ -1,6 +1,7 @@
-score-table section {
+#start-button {
   margin-top: 50vh;
 }
+
 .score-entry-cell, .table-head-cell, .table-body-cell, .total-score-cell, input {
   width: 25% !important;
   display: inline;

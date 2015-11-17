@@ -37,11 +37,12 @@
                   if (selection.length >= 2) {
                     this.game.players = selection;
                     this.game.started = true;
+                    $('#start-button').css('margin-top','5vh'); //FIXME
                     for (var i = 0; i < selection.length; i++) {
                       this.game.score.totals.push(0);
                     }
                   } else {
-                    this.startButtonText = "Finish selecting players then click me!"
+                    this.displays.startButtonText = "Finish selecting players then click me!"
                   }
                 };
 
