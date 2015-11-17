@@ -59,6 +59,7 @@
           //to the rummy-table directive. Also sets the doneEntering Boolean (to hide various divs).
           this.doneEntering = function() {
             usersSvc.setSelection(this.playersEntered);
+            this.started = !this.started;
           },
 
           //this function compares the number of currently selected players (playersEntered.length)

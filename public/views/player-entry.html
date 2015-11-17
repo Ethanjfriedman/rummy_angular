@@ -4,7 +4,7 @@
 player selection code -->
 <section id="player-entry-section">
   <!-- this opening div is hidden once you click the 'begin' button -->
-  <div class="animate-hide row" ng-hide="entry.started">
+  <div class="animate-hide row" ng-hide="entry.started || entry.playersEntered.length > 1">
     <!-- this button calls startEntering() -->
 
     <button class="col s2 offset-s5" ng-click="entry.started = true">Begin</button>
@@ -68,5 +68,4 @@ player selection code -->
         <button ng-click="entry.doneEntering()">I'm satisfied with this player selection</button>
       </div>
     </div>
-  <div>
 </section>
