@@ -1,44 +1,65 @@
 <link rel="stylesheet" href="../stylesheets/header.css" type="text/css"  media="screen,projection"/>
-<h3>rummy.score</h3>
-<div class='topBar'>
-  <div class='mobileMenu'>
-     <div class='navbar'>
-      <ul>
-        <li><a href="#">About this Project</a></li>
-      </ul>
-    </div>
 
-    <div id="hamburger-button">
-            <span></span>
-            <span></span>
-            <span></span>
-    </div>
-  </div>
-  <div class='left'>
-  <a id='logo' href='/'>
-    <h3 class='logo'>rummy.score</h3></a>
-    <p class='tagline'>Data Visualization made easy. </br> Learn more about the city you love.</p>
-  </div>
-  <div class='right'>
-    <ul>
-        <li><a href="/howto">How to Use the Site</a></li>
-        <li><a href="/about">About this Project</a></li>
-    </ul>
-  </div>
-</div>
+  <nav>
+   <div class="nav-wrapper">
+     <a href="#!" class="brand-logo center">rummy.score</a>
+     <a href="#" data-activates="mobile-menu" class="button-collapse"><i class="material-icons">menu</i></a>
+     <ul class="right hide-on-med-and-down">
+       <li><a href="#howto" class="modal-trigger waves-effect waves-black">How to Use the App</a></li>
+       <li><a href="#about" class="modal-trigger waves-effect waves-black">About this Project</a></li>
+     </ul>
+     <ul class="side-nav" id="mobile-menu">
+       <li><a href="#howto">How to Use the App</a></li>
+       <li><a href="#about">About this Project</a></li>
+     </ul>
+   </div>
+ </nav>
 
-<script>
-  function animateHamburger() {
-  $('#hamburger-button').toggleClass('open');
-/*animating burger to x*/
-}
+ <!-- "how to use the app" modal-->
+ <div id="howto" class="modal modal-fixed-footer">
+   <div class="modal-content">
+     <h4>rummy.score</h4>
+     <p><strong>rummy.score</strong> is an app for keeping track of your rummy 500 games.</p>
+     <p>Click 'begin' and then select the number of players (2-4) in your game from the dropdown.</p>
+     <p>A list of all available players will appear; select them using shift-click or control-click to make multiple
+       selections. A new player can be created using the appropriate form.</p>
+     <p>When you're satisfied with the player selection, click the button and then, after the first turn in your game is complete, click the 'let's score' button to start entering scores.
+       The game will automatically track and total the scores for you, and indicate when someone has won.</p>
+     <p>That's it! It's pretty simple. rummy.score is a project of <a href="http://www.ethanjfriedman.com">Ethan Friedman</a>.</p>
+   </div>
+   <div class="modal-footer">
+     <a href="#" class="modal-action modal-close waves-effect waves-black btn-flat">Agree</a>
+   </div>
+ </div>
 
-function slideMenu(){
-  $('.navbar').toggleClass('open');
-  /*animating menu slidedown*/
-}
-$('#hamburger-button').click(function(){
-  animateHamburger();
-  slideMenu();/*attaching click handler to burger*/
-});
+<!-- "about this project" modal -->
+ <div id="about" class="modal modal-fixed-footer">
+   <div class="modal-content">
+     <h4>rummy.score</h4>
+     <p><strong>rummy.score</strong> was developed as a project by <a href="http://www.ethanjfriedman.com">Ethan Friedman</a>
+     as an experiment in building a MEAN stack app</p>
+     <p>What's a MEAN stack you ask?</p>
+     <p><strong>M</strong>ongoDB: <a href="https://www.mongodb.org/">MongoDB</a> is a <a href="https://en.wikipedia.org/wiki/NoSQL">noSQL</a> database used to store the player and game data.</p>
+     <p><strong>E</strong>xpress.js: <a href="http://expressjs.com/">Express.js</a> is a web server application framework
+     for Node.js (see below).</p>
+     <p><strong>A</strong>ngularJS: <a href="https://www.angularjs.org/">AngularJS</a> is a front-end framework used for building
+       single-page applications such as this one. It provides two-way data binding between the view on the page and the model behind
+       the scenes.</p>
+     <p><strong>N</strong>ode.js: <a href="https://nodejs.org/en/">Node.js</a> is a server-side runtime environment for building web applications. It comes with
+     a huge library of packages to make building web apps fast and seamless.</p>
+   </div>
+   <div class="modal-footer">
+     <a href="#" class="modal-action modal-close waves-effect waves-black btn-flat">Agree</a>
+   </div>
+ </div>
+
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".button-collapse").sideNav(); //activates the mobile side nav
+
+   $('.modal-trigger').leanModal(); //activates modals
+ });
+
 </script>
