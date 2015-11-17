@@ -48,10 +48,20 @@ router.post('/users', function(req, res) {
 });
 
 router.patch('/users/:id', function(req, res) {
-  console.log(req.body);
-  console.log("***************************************");
-  console.log(req.params);
-  var id = req.params.id;
+  var user= req.body;
+  User.findByIdAndUpdate()
+  Model.findByIdAndUpdate(user._id,
+    { record:
+      { wins: user.record.wins, losses: user.record.losses, ties: user.record.ties
+      }
+    }, function(error, updated) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log(updated);
+        res.json({user: updated});
+      }
+    });
 });
 
 //TODO

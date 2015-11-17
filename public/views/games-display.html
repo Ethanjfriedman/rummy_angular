@@ -1,4 +1,29 @@
-<section>
-  <button ng-click="games.getGames()">show me past games from the database!</button>
-  <p>{{games.games}}</p>
+<section ng-show="games.displayed">
+  <p>Click on any game for more information -- AS OF 11/17/15 NOT YET WORKING</p>
+  <table class="responsive-table highlight centered">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Players / Scores</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th>Winner(s)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="game in games.games">
+        <td>
+          {{ game.date | date: "mediumDate" }}
+        </td>
+        <td ng-repeat="player in game.players ">
+          <strong>{{ player.name }}</strong>
+          <span>{{ player.total }}</span>
+        </td>
+        <td ng-repeat="winner in game.winners" class="table-winner">
+          {{ winner.name }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </section>

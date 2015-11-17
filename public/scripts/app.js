@@ -24,9 +24,23 @@
           this.getGames = function() {
             $http.get('/games').then(
               function(result) {
-                controller.games = result.data[0];
-                console.log(result.data);
-                console.log(controller.games);
+                var tempArray = result.data[0];
+                for (var i = 0; i < tempArray.length; i++) {
+                  var tempGame = {
+                    date: tempArray[i].date,
+                    winners: tempArray[i].winners,
+                    players: []
+                  }
+                  for (var j = 0; j < tempArray[i].players.length; j++) {
+                    var tempPlayer = {
+                      name: tempArray[i].players[j].name,
+                      total: tempArray[i].totals[j]
+                    }
+                    tempGame.players.push(tempPlayer);
+                  }
+                controller.games.push(tempGame);
+                console.log(tempGame);
+                }
               }, function(error) {
                 console.log(error);
               });

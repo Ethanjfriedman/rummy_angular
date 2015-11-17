@@ -81,9 +81,10 @@
                     if (this.game.winners.length === 1) {
                       if (finalScores[i] === maxScore) {
                         player.record.wins += 1;
+                        console.log(player);
                         usersSvc.updateUser(player);
                       } else {
-                        player.record.losses -= 1;
+                        player.record.losses += 1;
                         usersSvc.updateUser(player);
                       }
                     } else {
@@ -91,7 +92,7 @@
                         player.record.ties += 1;
                         usersSvc.updateUser(player);
                       } else {
-                        player.record.losses -= 1;
+                        player.record.losses += 1;
                         usersSvc.updateUser(player);
                       }
                     }
@@ -141,6 +142,8 @@
                       console.log(error);
                     }
                   );
+
+                  $('input').prop('disabled', true);
                 };
               },
               controllerAs: 'table'
