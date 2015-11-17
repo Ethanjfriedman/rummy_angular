@@ -11,7 +11,6 @@
         header: "views/header.html",
         footer: "views/footer.html"
       }
-
   }])
     .service('usersSvc', function($http) {
       var users = []; //this array stores the users available to be selected.

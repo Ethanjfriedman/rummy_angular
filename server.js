@@ -41,7 +41,6 @@ server.use(userController);
 //all '/games' routes in public/controllers/games.js
 var gameController = require('./public/controllers/games.js');
 server.use(gameController);
-console.log(gameController.router);
 
 /************************************************************/
 /****** GET request to root renders the Angular SPA *********/
