@@ -24,7 +24,7 @@
           this.getGames = function() {
             $http.get('/games').then(
               function(result) {
-                var tempArray = result.data[0];
+                var tempArray = result.data.games;
                 for (var i = 0; i < tempArray.length; i++) {
                   var tempGame = {
                     date: tempArray[i].date,

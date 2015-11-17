@@ -10,3 +10,7 @@ input[type=submit] {
   padding: 0.5% !important;
   color: black !important;
 }
+
+#winning-message {
+  color: red;
+}
