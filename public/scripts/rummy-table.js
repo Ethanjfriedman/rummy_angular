@@ -34,7 +34,7 @@
 
                 this.startGame = function() {
                   var selection = usersSvc.getSelection();
-                  if (selection.length > 1) {
+                  if (selection.length >= 2) {
                     this.game.players = selection;
                     this.game.started = true;
                     for (var i = 0; i < selection.length; i++) {

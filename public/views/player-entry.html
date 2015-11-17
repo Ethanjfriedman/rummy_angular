@@ -1,14 +1,12 @@
 <link rel="stylesheet" href="../stylesheets/player-entry.css" type="text/css"  media="screen,projection"/>
 
-<!--
-This section contains the header, 'begin button', the dropdown to enter the number of players, and the
-player selection code
--->
+<!-- This section contains the 'begin button', the dropdown to enter the number of players, and the
+player selection code -->
 <section id="player-entry-section">
-
   <!-- this opening div is hidden once you click the 'begin' button -->
   <div class="animate-hide row" ng-hide="entry.started">
     <!-- this button calls startEntering() -->
+
     <button class="col s2 offset-s5" ng-click="entry.started = true">Begin</button>
   </div>
 
@@ -42,24 +40,26 @@ player selection code
           </p>
           <p ng-show="entry.compareNums() < 0" id="too-many-players"><strong>You've entered too many players. Please only choose {{entry.numPlayers}} players.</strong></p>
         </div>
-        <select ng-model="entry.playersEntered"
-                title="Player Selection"
-                id="player-selection"
-                ng-options="player.name for player in entry.availablePlayers  | orderBy:'name'"
-                class="col s4 offset-s4"
-                multiple autofocus>
-          <optgroup label="Available Players"></optgroup>
-        </select>
+        <div class="row">
+          <select ng-model="entry.playersEntered"
+                  title="Player Selection"
+                  id="player-selection"
+                  ng-options="player.name for player in entry.availablePlayers | orderBy:'name'"
+                  class="col s4 offset-s4"
+                  multiple autofocus>
+            <optgroup label="Available Players"></optgroup>
+          </select>
+        </div>
         <div class="row">
           <form ng-submit="entry.createNewPlayer()" id="player-creation-form">
             <input type="text"
                    ng-model="entry.newPlayerName"
                    name="new-player-input"
                    id="new-player-input"
-                   class="col s2 offset-s4"
+                   class="col s2 offset-s4 center"
                    placeholder="New player name" />
             <div class="row">
-              <input type="submit" id="submit" class="col s2 offset-s4" value="Create new player" />
+              <input type="submit" id="submit" class="col s2 offset-s4 center" value="Create new player" />
             </div>
           </form>
         </div>

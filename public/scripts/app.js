@@ -11,6 +11,7 @@
         header: "views/header.html",
         footer: "views/footer.html"
       }
+      this.playerEntryComplete = false;
   }])
     .directive('gamesDisplay', ['$http',function($http) {
       return {
@@ -39,7 +40,6 @@
                     tempGame.players.push(tempPlayer);
                   }
                 controller.games.push(tempGame);
-                console.log(tempGame);
                 }
               }, function(error) {
                 console.log(error);
@@ -59,18 +59,19 @@
 
       return {
 
-        //returns the current users array
-        getUsers: function() {
-          return users;
-        },
-
         //returns the current selection array
         getSelection: function() {
           return selection;
         },
 
+        //sets the selection array to the value passed in
         setSelection: function(users) {
           selection = users;
+        },
+
+        //returns the current users array
+        getUsers: function() {
+          return users;
         },
 
         //Creates a new user in the db
@@ -86,6 +87,7 @@
             });
         },
 
+        //updates an existing user (this function is run after a game is complete, to update won-loss records)
         updateUser: function(user) {
           var id = user._id;
           user = JSON.stringify(user);

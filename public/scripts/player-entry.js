@@ -7,7 +7,7 @@
   console.log('player-entry.js loading');
 
   angular.module('playerEntry', [])
-    .directive('playerEntry', ['$http', 'usersSvc',function($http,usersSvc) {
+    .directive('playerEntry', ['$http', 'usersSvc', function($http,usersSvc) {
       return {
         restrict: 'E',
         templateUrl: './views/player-entry.html',
@@ -59,7 +59,6 @@
           //to the rummy-table directive. Also sets the doneEntering Boolean (to hide various divs).
           this.doneEntering = function() {
             usersSvc.setSelection(this.playersEntered);
-            this.selectionComplete = true;
           },
 
           //this function compares the number of currently selected players (playersEntered.length)
