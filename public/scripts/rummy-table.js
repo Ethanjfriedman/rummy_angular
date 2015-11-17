@@ -81,7 +81,6 @@
                     if (this.game.winners.length === 1) {
                       if (finalScores[i] === maxScore) {
                         player.record.wins += 1;
-                        console.log(player);
                         usersSvc.updateUser(player);
                       } else {
                         player.record.losses += 1;
@@ -136,7 +135,7 @@
                   console.log(completedGame);
                   $http.post('/games', JSON.stringify(completedGame)).then(
                     function(success) {
-                      console.log(success);
+                      // console.log(success);
                     },
                     function(error) {
                       console.log(error);

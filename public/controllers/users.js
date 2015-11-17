@@ -49,8 +49,7 @@ router.post('/users', function(req, res) {
 
 router.patch('/users/:id', function(req, res) {
   var user= req.body;
-  User.findByIdAndUpdate()
-  Model.findByIdAndUpdate(user._id,
+  User.findByIdAndUpdate(user._id,
     { record:
       { wins: user.record.wins, losses: user.record.losses, ties: user.record.ties
       }

@@ -10,3 +10,7 @@
 #submit {
   padding: 0.5%;
 }
+
+#too-many-players {
+  color: red;
+}

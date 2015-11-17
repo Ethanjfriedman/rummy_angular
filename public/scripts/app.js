@@ -77,10 +77,9 @@
         createUser: function(newUser) {  //TODO FIXME WORK ON ERROR HANDLING
           $http.post('/users',newUser)
             .then(function(user) {
-              console.log(user);
               if (user.data.error) {
                 this.error = user.data.error;
-                 console.log(user.data.error);
+                console.log(user.data.error);
               }
             }, function(err) {
               console.log(err);
@@ -90,11 +89,9 @@
         updateUser: function(user) {
           var id = user._id;
           user = JSON.stringify(user);
-          console.log('stringified user');
-          console.log(user);
           $http.patch('/users/' + id, user)
             .then(function(success){
-              console.log(success);
+              // console.log(success);
             },
             function(error){
               console.log(error);
