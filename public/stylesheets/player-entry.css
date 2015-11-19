@@ -14,3 +14,23 @@
 #too-many-players {
   color: red;
 }
+
+::-webkit-input-placeholder {
+   font-weight: 100;
+   color: lightgray;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  font-style: italic;
+  color: lightgray;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+  font-style: italic;
+  color: lightgray;
+}
+
+:-ms-input-placeholder {
+  font-style: italic;
+  color: lightgray;
+}

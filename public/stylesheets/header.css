@@ -15,3 +15,15 @@ nav {
 .modal-content p strong {
   font-weight: bolder;
 }
+
+.stats-dropdown-button:hover + ul {
+  background-color: red;
+}
+
+.modal-content thead {
+  background-color: darkgray;
+}
+
+th {
+  border-radius: 0;
+}

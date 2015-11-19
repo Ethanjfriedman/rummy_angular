@@ -3,22 +3,28 @@
   <nav>
    <div class="nav-wrapper">
      <a href="#!" class="brand-logo left">rummy.score</a>
+
+     <!-- desktop navbar -->
      <a href="#" data-activates="mobile-menu" class="button-collapse"><i class="material-icons">menu</i></a>
      <ul class="right hide-on-med-and-down">
-       <li><a href="#howto" class="modal-trigger waves-effect waves-black">How to Use the App</a></li>
+       <li><a href="#how-to" class="modal-trigger waves-effect waves-black">How to Use the App</a></li>
        <li><a href="#about" class="modal-trigger waves-effect waves-black">About this Project</a></li>
-       <li><a href="#games-table" class="modal-trigger waves-effect waves-black" ng-click="games.getGames()">View Statistics</a></li>
+       <li><a href="#players-table" class="modal-trigger waves-effect waves-black" ng-click="games.getPlayers()">Players</a></li>
+       <li><a href="#games-table" class="modal-trigger waves-effect waves-black" ng-click="games.getGames()">Past Games</a></li>
      </ul>
+
+     <!-- mobile menu -->
      <ul class="side-nav" id="mobile-menu">
-       <li><a href="#howto" class="modal-trigger waves-effect waves-black">How to Use the App</a></li>
+       <li><a href="#how-to" class="modal-trigger waves-effect waves-black">How to Use the App</a></li>
        <li><a href="#about" class="modal-trigger waves-effect waves-black">About this Project</a></li>
-       <li><a href="#" ng-click="games.getGames()">View Statistics</a></li>
+       <li><a href="#players-table" class="modal-trigger waves-effect waves-black" ng-click="games.getPlayers()">Players</a></li>
+       <li><a href="#games-table" class="modal-trigger waves-effect waves-black" ng-click="games.getGames()">Past Games</a></li>
      </ul>
    </div>
  </nav>
 
  <!-- "how to use the app" modal-->
- <div id="howto" class="modal modal-fixed-footer">
+ <div id="how-to" class="modal modal-fixed-footer">
    <div class="modal-content">
      <h4>rummy.score</h4>
      <p><strong>rummy.score</strong> is an app for keeping track of your rummy 500 games.</p>
@@ -62,4 +68,14 @@
    $('.modal-trigger').leanModal(); //activates modals
  });
 
+   $('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrain_width: true, // Does not change width of dropdown to that of the activator
+      hover: false, // Activate on hover
+      gutter: 0, // Spacing from edge
+      belowOrigin: true, // Displays dropdown below the button
+      alignment: 'left' // Displays dropdown with edge aligned to the left of button
+    }
+  );
 </script>

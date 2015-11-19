@@ -5,15 +5,15 @@
 (function() {
   console.log('app.js loading');
 
-  var app = angular.module('rummyModule',['playerEntry','rummyTable'])
-    .controller("RummyController", ['$http',function($http) {
+  var app = angular.module('rummyModule',['playerEntry', 'rummyTable'])
+    .controller("RummyController", ['$http', function($http) {
       this.templates = {
         header: "views/header.html",
         footer: "views/footer.html"
       }
       this.playerEntryComplete = false;
   }])
-    .directive('gamesDisplay', ['$http',function($http) {
+    .directive('gamesDisplay', ['$http', 'usersSvc', function($http, usersSvc) {
       return {
         restrict: 'E',
         templateUrl: './views/games-display.html',
@@ -21,10 +21,35 @@
           var controller = this;
           this.displayed = false;
           this.games = [];
+          this.players = [];
 
+          this.getPlayers = function() {
+            $http.get('/users')
+            .then(function(result){
+              controller.players = result.data.users.sort(function(a,b) {
+                //this is a nice little sort function, if I do say so myself
+                //sorts players first by most wins, then most ties, then fewest losses
+                if (a.record.wins !== b.record.wins) {
+                  return b.record.wins - a.record.wins;
+                } else if (a.record.ties !== b.record.ties) {
+                  return b.record.ties - a.record.ties;
+                } else {
+                  return a.record.losses - b.record.losses;
+                }
+              });
+            }, function(error){
+              console.log('error fetching users from db');
+              console.log(error);
+            });
+          };
+
+          //gets the games from the server. Cleans up the data (the whole tempGame/tempPlayer loop)
+          //so that it's easy to display PlayerName Player Total, Player2Name Player2 Total, etc.
           this.getGames = function() {
             $http.get('/games').then(
               function(result) {
+
+                //see comment above re: this chunk of code
                 var tempArray = result.data.games;
                 for (var i = 0; i < tempArray.length; i++) {
                   var tempGame = {
@@ -38,6 +63,19 @@
                       total: tempArray[i].totals[j]
                     }
                     tempGame.players.push(tempPlayer);
+                  }
+
+                  //continuing the ugliness TODO refactor
+                  //this next loop pushes in blank players for games with 2 or 3 players so that the columns
+                  //in the table display line up nicely
+                  if (tempArray[i].players.length < 4) {
+                    for (var k = 0; k < (4 - tempArray[i].players.length); k++) {
+                      var tempPlayer = {
+                        name: "",
+                        total: ""
+                      }
+                      tempGame.players.push(tempPlayer);
+                    }
                   }
                 controller.games.push(tempGame);
                 }
@@ -109,16 +147,16 @@
         },
 
         //not currently used -- to be used if I want to add in capability to remove users
-        deleteUser: function(user) {
-          for (var i = 0; i < users.length; i++) {
-            if (users[i] == user) {
-              users.splice(i, 1);
-              return true;
-            } else {
-              return false;
-            }
-          }
-        }
+        // deleteUser: function(user) {
+        //   for (var i = 0; i < users.length; i++) {
+        //     if (users[i] == user) {
+        //       users.splice(i, 1);
+        //       return true;
+        //     } else {
+        //       return false;
+        //     }
+        //   }
+        // },
       }
     });
 })();

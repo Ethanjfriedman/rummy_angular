@@ -1,5 +1,28 @@
-<section ng-show="games.displayed" id="games-table" class="modal modal-fixed-footer">
-  <!-- <p>Click on any game for more information -- AS OF 11/17/15 NOT YET WORKING</p> -->
+<section id="players-table" class="modal modal-fixed-footer">
+   <table class="responsive-table highlight centered modal-content">
+     <thead>
+       <tr>
+         <th>Player</th>
+         <th>Wins</th>
+         <th>Losses</th>
+         <th>Ties</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr ng-repeat="player in games.players">
+         <td>{{ player.name }}</td>
+         <td>{{ player.record.wins }} </td>
+         <td>{{ player.record.losses }} </td>
+         <td>{{ player.record.ties }}</td>
+       </tr>
+     </tbody>
+   </table>
+   <div class="modal-footer">
+     <a href="#" class="modal-action modal-close waves-effect waves-black btn-flat">go back</a>
+   </div>
+ </section>
+
+  <section id="games-table" class="modal modal-fixed-footer">
   <table class="responsive-table highlight centered modal-content">
     <thead>
       <tr>
@@ -9,6 +32,9 @@
         <th></th>
         <th></th>
         <th>Winner(s)</th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -16,7 +42,7 @@
         <td>
           {{ game.date | date: "mediumDate" }}
         </td>
-        <td ng-repeat="player in game.players ">
+        <td ng-repeat="player in game.players">
           <strong>{{ player.name }}</strong>
           <span>{{ player.total }}</span>
         </td>
