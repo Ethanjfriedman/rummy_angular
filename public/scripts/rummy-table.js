@@ -44,6 +44,7 @@
                   } else {
                     this.displays.startButtonText = "Finish selecting players then click me!"
                   }
+                  angular.element('.table-input-cell:first-of-type').prop('autofocus',true);
                 };
 
                 this.receiveScores = function(scores) {
@@ -60,6 +61,7 @@
                   }
 
                   this.game.score.currentTurnScores = [];
+                  angular.element('.table-input-cell:first-of-type').prop('autofocus',true);
                   if (weHaveAWinner) {
                     this.endGame(totals);
                   }
@@ -98,7 +100,6 @@
                     }
                   }
 
-                  console.log(this.game.winners);
                   var winnersCount = this.game.winners.length;
                   var text = "";
                   switch (winnersCount) {
@@ -124,7 +125,7 @@
                     text = "uh-oh something's wrong";
                   }
                   this.displays.winningText = text;
-
+                  angular.element('#winning-message').removeClass('hidden');
                   var completedGame = {
                     players: JSON.parse(angular.toJson(this.game.players)),
                     date: Date.now(),
@@ -133,7 +134,6 @@
                     turns: this.game.score.turns,
                     totals: this.game.score.totals
                   }
-                  console.log(completedGame);
                   $http.post('/games', JSON.stringify(completedGame)).then(
                     function(success) {
                       // console.log(success);
@@ -144,6 +144,11 @@
                   );
 
                   $('input').prop('disabled', true);
+                };
+
+                this.reset = function() {
+                  console.log('resetting');
+                  window.location.reload();
                 };
               },
               controllerAs: 'table'

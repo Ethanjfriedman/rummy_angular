@@ -21,3 +21,7 @@ input[type=submit] {
   overflow: hidden;
   position: relative;
 }
+
+.hidden {
+  display: none;
+}

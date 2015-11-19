@@ -28,11 +28,10 @@
                    min="-500"
                    max="500"
                    id="table-input-cell"
-                   class="col s3"
+                   class="table-input-cell col s3"
                    ng-model="table.game.score.currentTurnScores[$index]"
                    ng-repeat="player in table.game.players track by $index"
-                   required
-                   autofocus>
+                   required>
             </input>
           <input type="submit" class="col s2">
         </form>
@@ -43,7 +42,8 @@
         </div>
     </div>
   </div>
-  <div id="winning message">
-    {{table.displays.winningText}}
+  <div id="winning-message" class="hidden">
+    <p>{{table.displays.winningText}}<p>
+    <div><button class="waves-effect waves-light btn grey" ng-click="table.reset()">start again</button></div>
   </div>
 </section>
