@@ -27,3 +27,7 @@ nav {
 th {
   border-radius: 0;
 }
+
+.italic {
+  font-style: italic;
+}
