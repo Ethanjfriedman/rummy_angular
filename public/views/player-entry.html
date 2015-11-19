@@ -29,7 +29,7 @@ player selection code -->
           <p>Choose from list below or create a new player</p>
           <p>(shift- or command-click to select multiple players)</p>
         </div>
-        <button ng-click="entry.goBack()">Go back (choose a different number of players)</button>
+        <button class="btn grey lowercase waves-effect waves-light" ng-click="entry.goBack()">Go back (choose a different number of players)</button>
         <div id="selected-players" class="row">
           <p>Current selection:</p>
           <p ng-repeat="player in entry.playersEntered" ng-hide="entry.playersEntered.length < 1">
@@ -60,12 +60,12 @@ player selection code -->
                      placeholder="New player name" />
             </div>
             <div class="row">
-              <input type="submit" id="submit" class="col offset-s4 s12 center" value="Create new player" />
+              <input type="submit" id="submit" class="btn grey lowercase waves-effect waves-ligth col offset-s4 s12 center" value="Create new player" />
             </div>
           </form>
       </div>
       <div ng-show="entry.compareNums() == 0 && entry.playersEntered.length >= 2">
-        <button ng-click="entry.doneEntering()">I'm satisfied with this player selection</button>
+        <button class="btn grey lowercase waves-effect waves-light" ng-click="entry.doneEntering()">I'm satisfied with this player selection</button>
       </div>
     </div>
 </section>

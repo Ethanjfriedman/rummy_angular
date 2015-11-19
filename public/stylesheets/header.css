@@ -3,6 +3,10 @@ nav {
   margin-bottom: 10vh;
 }
 
+nav ul a {
+  text-transform: lowercase;
+}
+
 .modal {
   color: black;
 }
