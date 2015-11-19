@@ -39,3 +39,7 @@ button {
 #table-winner {
   text-align: right !important;
 }
+
+.lowercase {
+  text-transform: lowercase;
+}

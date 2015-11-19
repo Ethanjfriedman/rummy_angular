@@ -7,7 +7,7 @@ player selection code -->
   <div class="animate-hide row" ng-hide="entry.started || entry.playersEntered.length > 1">
 
     <!-- this button calls startEntering() -->
-    <button class="col s2 offset-s5" ng-click="entry.started = true; entry.fetchUsers()">Begin</button>
+    <button class="col s2 offset-s5 btn grey waves-effect waves-light lowercase" ng-click="entry.started = true; entry.fetchUsers()">Begin</button>
   </div>
 
   <div ng-hide="entry.selectionComplete">
