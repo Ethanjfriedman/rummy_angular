@@ -1,5 +1,6 @@
 #start-button {
   margin-top: 50vh;
+  right: -1000px;
 }
 
 .score-entry-cell, .table-head-cell, .table-body-cell, .total-score-cell, input {
@@ -14,4 +15,9 @@ input[type=submit] {
 
 #winning-message {
   color: red;
+}
+
+#start-button-div {
+  overflow: hidden;
+  position: relative;
 }

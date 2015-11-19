@@ -60,6 +60,10 @@
           this.doneEntering = function() {
             usersSvc.setSelection(this.playersEntered);
             this.started = !this.started;
+            var el = angular.element('#start-button');
+            console.log(el);
+            el.css('right','0px');
+            console.log(el);
           },
 
           //this function compares the number of currently selected players (playersEntered.length)
